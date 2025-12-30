@@ -1,6 +1,6 @@
 ---
-title: "编程语言：八股文（Part 2/2）"
-excerpt: 'Python，C++，Go的包管理、底层实现与高级特性等'
+title: "编程语言：八股文（Part 3/3）"
+excerpt: 'Python，C++，Golang'
 
 collection: theory
 category: basic
