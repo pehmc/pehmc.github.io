@@ -207,4 +207,4 @@ related: true
 
 随机故障通常是并发问题。
 
-[^1] The Pragmatic Programmer https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
+[^1]: The Pragmatic Programmer https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/

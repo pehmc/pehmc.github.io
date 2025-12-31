@@ -1,6 +1,6 @@
 ---
-title: "静态漏洞挖掘：八股文 （Part 3/3）"
-excerpt: '自动化代码审计'
+title: "静态漏洞挖掘：八股文 （Part 4/4）"
+excerpt: '代码审计的八股文'
 
 collection: theory
 category: sec

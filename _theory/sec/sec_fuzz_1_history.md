@@ -1,5 +1,5 @@
 ---
-title: "动态漏洞挖掘：简史 （Part 1/3）"
+title: "动态漏洞挖掘：简史 （Part 1/4）"
 excerpt: '记录模糊测试发展的重要节点'
 
 collection: theory
@@ -182,6 +182,17 @@ fuzz4all借助大语言模型取代变异策略，尝试实现通用的模糊测
 2. 应用在任何程序中
 3. 发现二进制漏洞
 
+## 2025年
+
+由DARPA主办的AIxCC大赛在Defcon 33结束，Trail of Bits开发的漏洞挖掘框架Buttercup获得亚军[^11]。
+
+![](../../images/theory/sec/fuzz_history/buttercup.png)
+
+Buttercup利用 AI 增强模糊测试、静态分析，在 20 类 CWE 上实现了高准确度的漏洞发现与修复表现。
+
+**节点说明：**
+1. 模糊测试作为核心方法论，应用在AI漏洞挖掘时代
+
 [^1]: The Fuzz Generator https://pages.cs.wisc.edu/~bart/fuzz/CS736-Projects-f1988.pdf
 [^2]: SPIKE https://blackhat.com/html/bh-usa-02/bh-usa-02-speakers.html
 [^3]: Peach https://infocon.org/cons/PH-Neutral/0x7d8/peach.html
@@ -192,3 +203,4 @@ fuzz4all借助大语言模型取代变异策略，尝试实现通用的模糊测
 [^8]: sanitizers https://github.com/google/sanitizers
 [^9]: OSS-Fuzz https://github.com/google/oss-fuzz
 [^10]: Fuzz4all https://dl.acm.org/doi/abs/10.1145/3597503.3639121
+[^11]: Buttercup https://github.com/trailofbits/buttercup

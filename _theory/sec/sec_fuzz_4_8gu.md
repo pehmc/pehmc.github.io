@@ -1,5 +1,5 @@
 ---
-title: "动态漏洞挖掘：八股文 （Part 3/3）"
+title: "动态漏洞挖掘：八股文 （Part 4/4）"
 excerpt: '模糊测试的八股文'
 
 collection: theory
