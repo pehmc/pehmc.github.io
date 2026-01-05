@@ -80,19 +80,17 @@ learning_category:
   topic:
     title: '议题'
   paper:
-    title: '论文'    
+    title: '论文'
 
 practice_category:
   '101':
     title: '101'
   focus:
-    title: 'RobotAgent & Sec'
+    title: 'focus'
 
 theory_category:
   basic:
     title: '基础'
-  robotagent:
-    title: '机器人智能体'
   sec:
     title: '安全'
 

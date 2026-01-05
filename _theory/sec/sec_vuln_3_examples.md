@@ -1,6 +1,6 @@
 ---
-title: "RobotAgent漏洞：实例分析（Part 3/4）"
-excerpt: '漏洞与补丁'
+title: "漏洞：实例分析（Part 3/4）"
+excerpt: '实例及其补丁'
 
 collection: theory
 category: sec
@@ -17,7 +17,7 @@ share: true
 related: true
 ---
 
-![](../../images/theory/sec/vuln_examples/prompt_injection.jpg)
+![](../../images/theory/sec/vuln_examples/overflow.png)
 
 ## Top 10 代码漏洞、补丁
 

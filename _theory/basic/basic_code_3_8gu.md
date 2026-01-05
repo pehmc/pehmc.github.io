@@ -1,5 +1,5 @@
 ---
-title: "编程语言：八股文（Part 3/3）"
+title: "编程：八股文（Part 3/3）"
 excerpt: 'Python，C++，Golang'
 
 collection: theory

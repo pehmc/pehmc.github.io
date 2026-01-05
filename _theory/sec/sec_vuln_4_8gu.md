@@ -1,5 +1,5 @@
 ---
-title: "RobotAgent漏洞：八股文（Part 4/4）"
+title: "漏洞：八股文（Part 4/4）"
 excerpt: '漏洞相关的八股文'
 
 collection: theory

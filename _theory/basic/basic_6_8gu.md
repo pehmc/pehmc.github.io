@@ -654,8 +654,6 @@ wg.Wait()
 
 **6.K8S的组件有哪些？**
 
-![](../../images/theory/basic/8gu/k8s.png)
-
 - kube-apiserver，内外部请求的唯一接口，提供 RESTful API。
 - etcd，持久化存储集群数据（节点、Pod、配置、状态等），而非缓存
 - kube-scheduler，调度工作节点，绑定节点与Pod。
@@ -667,8 +665,6 @@ wg.Wait()
 **1.介绍一下微服务架构？**
 - 微服务架构是分布式系统，通常采用分布式的容器部署实现。
 - 微服务架构有3个组成部分。
-
-![](../../images/theory/basic/8gu/microservice.png)
 
 1. 微服务，通常根据业务领域划分。
 2. 中间件，支撑微服务的基础设施。

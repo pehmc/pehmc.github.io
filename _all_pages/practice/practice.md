@@ -5,14 +5,13 @@ permalink: /practice/
 author_profile: true
 ---
 
-**深入RobotAgent & Sec，从101到实战**
+**项目实践，从101到实战**
 
 ---
 
 🐴 [101](./101)
-- google
+- Google PZ
 - AIxCC
 
 🦄 [实战](./focus/)
 - sofa
-- roz

@@ -1,5 +1,5 @@
 ---
-title: "RobotAgent漏洞：补丁（Part 2/4）"
+title: "漏洞：补丁（Part 2/4）"
 excerpt: '漏洞的修复方案'
 
 collection: theory

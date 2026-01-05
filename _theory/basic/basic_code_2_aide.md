@@ -1,5 +1,5 @@
 ---
-title: "编程语言：AI辅助指南（Part 2/3）"
+title: "编程：AI辅助指南（Part 2/3）"
 excerpt: '能力和边界'
 
 collection: theory

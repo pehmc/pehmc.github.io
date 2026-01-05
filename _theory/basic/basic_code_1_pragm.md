@@ -1,5 +1,5 @@
 ---
-title: "编程语言：务实之道（Part 1/3）"
+title: "编程：务实之道（Part 1/3）"
 excerpt: '从小工到大家'
 
 collection: theory
