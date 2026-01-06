@@ -23,7 +23,9 @@ related: true
 ## 简介
 
 Fuzz4All开源在[github](https://github.com/fuzz4all/fuzz4all)。
-简介从以下两点介绍该论文：1. 目前模糊测试（下文以fuzz代替）存在的问题。 2. Fuzz4All作的工作。
+简介从以下两点介绍该论文：
+1. 目前模糊测试（下文以fuzz代替）存在的问题。 
+2. Fuzz4All作的工作。
 
 ### 一、fuzz存在的问题
 

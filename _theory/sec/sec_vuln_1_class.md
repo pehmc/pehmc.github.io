@@ -1,6 +1,6 @@
 ---
 title: "漏洞：分类（Part 1/4）"
-excerpt: 'Top K'
+excerpt: '漏洞类型 Top K'
 
 collection: theory
 category: sec
@@ -18,7 +18,7 @@ related: true
 
 ![](../../images/theory/sec/vuln_class/vuln.png)
 
-## RobotAgent漏洞
+## 概述
 
 未验证、未正常处理的输入或者操作可能引发漏洞，各种类型的漏洞可能相互引发，形成一条漏洞链，共同造成代码执行等影响。
 
@@ -32,21 +32,21 @@ related: true
 
 ### 二、漏洞的分类
 
-RobotAgent的漏洞存在2类：
+漏洞存在2类：
 - 代码漏洞，不同的编程语言受到不同漏洞的影响,主要的语言：Python，C++，Go，Java。
-- 通用漏洞，在更高的维度存在的漏洞。
+- 逻辑漏洞，在更高的维度存在的漏洞。
 
-## Top 10 代码漏洞
+## Top K 代码漏洞
 
 涵盖最常见的代码漏洞[^2]。
 
-### 一、OOB(Out-of-bounds)
+### 一、OOB（Out-of-bounds）
 
 OOB类型的漏洞有两种原语：
 1. OOB R，越界读，导致泄漏关键信息绕过保护策略、读取到非预期的内存页。
 2. OOB W，越界写，导致关键指针、数据和控制结构被覆盖，同时越界写通常可以实现越界读。
 
-#### 1.栈溢出(OOB R/W)
+#### 1.栈溢出（OOB R/W）
 > **受影响的语言：Python，C++，Go，Java**
 
 栈溢出是一种 OOB R/W 漏洞，通过构造恶意输入可导致4种影响：
@@ -61,7 +61,7 @@ OOB类型的漏洞有两种原语：
 2. off-by-one，在用户态程序或内核调用strncat(), strncpy(),strlen()时出现。
 - 常见的漏洞利用：覆写rip，rbp或者邻接变量实现控制流劫持。
 
-#### 2.堆溢出(OOB R/W)
+#### 2.堆溢出（OOB R/W）
 > **受影响的语言：Python，C++，Go，Java**
 
 堆溢出是一种OOB R/W漏洞，通过构造恶意输入可导致4种影响：
@@ -76,14 +76,14 @@ OOB类型的漏洞有两种原语：
 2. off-by-one，类似于栈off-by-one，区别在于堆off-by-one造成代码执行的可利用性与堆溢出相当。
 - 常见的漏洞利用：一个例子是用户态程序溢出0x00时，在size为0x100倍数的时，使得prev_in_use位被清，这样前块会被认为是freed块，从而触发特定bin的前向合并造成unsafe unlink，实现任意地址写，在此基础上覆写got表，篡改FSOP、rtld_global上面的函数指针为one_gadget，实现代码执行。
 
-#### 3.缺陷函数越界访问(OOB R)
+#### 3.缺陷函数越界访问（OOB R）
 > **受影响的语言：Python，C++，Go，Java**
 
 缺陷函数越界访问是OOB R类型漏洞，造成2种影响：
 1. 抛出异常，仅内存安全语言。
 2. 信息泄露，越界访问会造成泄漏，导致栈地址、堆基址、libc和ld基址被泄露。常见的类string返回时，其实是把栈地址addr作为参数，传入函数使其把返回的string类存储在addr指向的栈空间当中。据此可以泄漏栈基址。
 
-### 二、UAF(Use-After-Free)
+### 二、UAF（Use-After-Free）
 
 UAF类型的漏洞有4种原语：
 1. UAF W，释放后写，导致关键指针、数据和控制结构被篡改。
@@ -91,7 +91,7 @@ UAF类型的漏洞有4种原语：
 3. Double Free，二次释放，达到UAF R/W的效果。
 4. UAF变种。
 
-#### 1.堆UAF(UAF R/W)
+#### 1.堆UAF（UAF R/W）
 > **受影响的语言：C++**
 
 堆UAF造成的影响：
@@ -106,7 +106,7 @@ UAF类型的漏洞有4种原语：
 内核堆UAF：
 在内核页管理代码、细粒度的object管理代码中存在UAF漏洞。
 
-#### 2.堆Double Free(UAF R/W)
+#### 2.堆Double Free（UAF R/W）
 > **受影响的语言：C++**
 
 当一个内存块被2次free后，再1次allocate时，该块会同时处于allocated和freed状态，即该内存块在保存freed状态bins信息的情况下，是可读写的，由此达到UAF R和UAF W的效果。
@@ -192,6 +192,10 @@ if(len < 512){
 ```
 get_src_len()接收无符号数大于231，经过符号转换后len变成负数，绕过if判断，造成栈溢出。
 
+### 3.取反INT_MIN
+
+所有有符号整数类型（int8_t, int16_t, int32_t, int64_t等）的 INTn_MIN 取负都会得到自身。 这是二进制补码表示法的固有特性，源于正负数表示范围的不对称性。
+
 ### 六、异常未捕获
 > **受影响的语言：Python，C++，Go，Java**
 
@@ -207,18 +211,22 @@ get_src_len()接收无符号数大于231，经过符号转换后len变成负数�
 反序列化的影响：
 1. 代码执行。
 
-### 八、控制流注入
+### 八、非法注入
 > **受影响的语言：Python**
 
-控制流注入是对命令注入、代码注入的概括。利用这些漏洞构造的语义化输入，可以直接劫持控制流，导致代码执行。
+非法注入是对命令注入、代码注入和数据库注入的概括。利用命令注入和参数注入构造的语义化输入，可以直接劫持控制流，导致代码执行，利用数据库注入可以泄露信息，或者间接执行代码。
 
 #### 1.命令注入
 
 程序将恶意输入拼接到操作系统命令中，导致代码执行。
 
-#### 2.代码注入
+#### 2.参数注入
 
-代码注入有相当多的变种，比如：XSS、XXE、SSTI、SPEL表达式注入等等。都是通过构造语义化输入，使得程序执行其中的代码。
+- 参数注入，cgi.exe -s
+
+#### 3.数据库注入
+
+SQL注入和NoSQL注入。
 
 ### 九、文件操作
 > **受影响的语言：Python**
@@ -227,7 +235,38 @@ get_src_len()接收无符号数大于231，经过符号转换后len变成负数�
 2.文件上传
 3.路径穿越
 
-###  十、竞态条件
+### 十、类型混淆
+
+常见于chrome V8 JS的处理
+
+## Top K 逻辑漏洞
+
+涵盖常见的逻辑漏洞。
+
+### 一、越权
+
+访问控制缺失、错误
+
+### 二、硬编码
+
+不安全的凭证
+
+### 三、依赖攻击
+
+依赖于底层代码库
+
+### 四、资源耗尽
+
+Call Stack Overflow（例如 Complex Nested Message）
+Flooding the server
+
+### 五、差异化
+
+https://blog.trailofbits.com/2025/06/17/unexpected-security-footguns-in-gos-parsers/
+
+### 六、配置错误
+
+### 七、竞态条件
 > **受影响的语言：Python，C++，Go，Java**
 
 竞态条件的影响：
@@ -282,14 +321,9 @@ Double Fetch也是竞态漏洞的一个子集，该漏洞的原理是：内核�
 
 从原理上来看，Double Fetch和TOCTTOU类似，都是利用时间间隔篡改数据，造成不一致性。也因此是可以被修复的。
 
-## Top 5 通用漏洞
+### 八、断言错误
 
-涵盖常见的RobotAgent漏洞[^3][^4]。
-
-### 一、越权
-
-### 二、供应链、依赖攻击
-
+程序为了检测逻辑错误，设置了断言。
 
 [^1]: Vulnerabilities by impact types https://www.cvedetails.com/vulnerabilities-by-types.php
 [^2]: CWE Website https://cwe.mitre.org/
