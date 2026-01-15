@@ -14,7 +14,7 @@ redirect_from:
 
 **🎓 毕业方向：** Comm Cryptosystem
 
- **🐙 毕业项目：**
+**🐙 毕业项目：**
 
 - [3D-CA](https://github.com/fuxxcss/3d-ca)
 

@@ -5,7 +5,7 @@ permalink: /practice/
 author_profile: true
 ---
 
-**项目实践，从101到实战**
+**从101到实战**
 
 ---
 
