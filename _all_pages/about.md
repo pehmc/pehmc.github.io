@@ -10,19 +10,19 @@ redirect_from:
 
 ---
 
-## 本科阶段
+### 2019 ~ 2023
 
-**🎓 毕业方向：** Comm Cryptosystem
+**🎓 兴趣方向：** Comm Cryptosystem
 
-**🐙 毕业项目：**
+**🐙 开源项目：**
 
 - [3D-CA](https://github.com/pehmc/3d-ca)
 
-## 研究生阶段
+### 2023 ~ 2026
 
-**🎓 研究方向：** Code Security
+**🎓 兴趣方向：** Code Security
 
-**🐙 研究项目：**
+**🐙 开源项目：**
 
 - [Checksecc](https://github.com/pehmc/checksecc)
 - [Sofa](https://github.com/pehmc/sofa)
