@@ -1,6 +1,6 @@
 ---
 title: "静态漏洞挖掘：工具 （Part 3/4）"
-excerpt: 'Joern，CodeQL'
+excerpt: 'Joern，CodeQL，Semgrep'
 
 collection: theory
 category: sec
@@ -23,7 +23,19 @@ related: true
 
 joern是针对源代码、字节码和二进制码进行健壮性分析的平台。核心数据结构是代码属性图（CPG），作为跨语言代码分析的抽象表示，CPG存储于图数据库中，使用特定的Scala查询语句能够挖掘代码中的漏洞。
 
-https://elmanto.github.io/posts/sast_derby_joern_vs_codeql
+前端参考：
+https://github.com/joernio/joern/tree/master/joern-cli/frontends
+
+查看所有steps：
+https://github.com/joernio/flatgraph/tree/master/core/src/main/scala/flatgraph/traversal
+
+
+cpg实际是所有图的集合：
+AST: Abstract Syntax Tree，抽象语法树；
+CDG: Control Dependence Graph，控制依赖图，主要包含 if/else 等控制结构的依赖关系；
+CFG: Control Flow Graph，控制流图，程序执行的所有可能路径；
+DDG: Data Dependency Graph，数据依赖图，包含属于依赖关系；
+PDG: Program Dependence Graph，程序依赖图，包含控制依赖和数据依赖关系；
 
 ### 一、适配的语言
 
@@ -278,4 +290,41 @@ joern> mytools.buffer_overflows(cpg) // run the script from within Joern Shell!
 您可以使用importCode（）等其他命令替换open（图）来处理新代码。你也可以生成json，创建报告等等。
 
 在外部运行：
+```
 $ joern --script buffer_overflows.sc --params graph=vlc-3.0.12
+```
+
+## CodeQL
+
+codeql系列文章 ： https://github.blog/2023-03-31-codeql-zero-to-hero-part-1-the-fundamentals-of-static-analysis-for-vulnerability-research/
+
+CodeQL的各种规则：
+unhandled-errors ： https://blog.trailofbits.com/2022/01/11/finding-unhandled-errors-using-codeql/
+Iterator Invalidation ： https://blog.trailofbits.com/2020/10/09/detecting-iterator-invalidation-with-codeql/
+Untrusted Pointer Derefs and Tainted Loop Conditions ： https://www.zerodayinitiative.com/blog/2022/2/22/clang-checkers-and-codeql-queries-for-detecting-untrusted-pointer-derefs-and-tainted-loop-conditions
+trailofbits 三方包 ： https://github.com/trailofbits/codeql-queries
+codeql 标准库 ： https://codeql.github.com/codeql-standard-libraries/
+
+## Semgrep
+
+semgrep的各种规则
+
+社区规则 ： https://github.com/semgrep/semgrep-rules
+Trail of Bits官方规则 ： https://github.com/trailofbits/semgrep-rules
+dgryski的golang规则 ： https://github.com/dgryski/semgrep-go
+0xdea的c/c++规则 ： https://github.com/0xdea/semgrep-rules
+安卓安全的规则 ： https://github.com/mindedsecurity/semgrep-rules-android-security
+
+goroutine leaks : https://blog.trailofbits.com/2021/11/08/discovering-goroutine-leaks-with-semgrep/
+ML libraries vulns ： https://blog.trailofbits.com/2022/10/03/semgrep-maching-learning-static-analysis/
+binary-vulnerability-discovery ： https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/
+Android Content Provider APIs ： https://shivasurya.me/security/android/android-security/2022/11/28/android-content-provider-semgrep-detection.html
+C/C++ ： https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research/
+Linting naked returns ： https://jemtucker.com/blog/linting-naked-returns-with-semgrep
+AWS CDK ： https://blog.aquia.io/blog/2022-02-18-semgrep-cdk/
+go web projects ： https://universalglue.dev/posts/semgrep-rules-for-go-web-projects/
+
+## 安全民主 https://github.com/projectdiscovery/
+
+基于YAML语法模板的定制化快速漏洞扫描器 https://github.com/projectdiscovery/nuclei
+社区模板 https://github.com/projectdiscovery/nuclei-templates

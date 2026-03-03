@@ -10,8 +10,5 @@ author_profile: true
 ---
 
 🐴 [101](./101)
-- Google PZ
-- AIxCC
 
 🦄 [实战](./focus/)
-- sofa

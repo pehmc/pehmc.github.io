@@ -14,6 +14,5 @@ author_profile: true
 - OffensiveCon
 
 📜 [论文学习](./paper/)
-- ICSE
 - USENIX
-- ICRA
+- ISSTA
